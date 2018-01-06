@@ -1001,17 +1001,29 @@ var App = function (_React$Component) {
   }
 
   _createClass(App, [{
+    key: 'fetchData',
+    value: function fetchData(zipcode) {
+      var url = "http://api.wunderground.com/api/9412603c2dcefb48/conditions/q/" + zipcode + ".json";
+      fetch(url).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        return console.log(data.current_observation.display_location);
+      });
+    }
+  }, {
     key: 'updateZipCode',
     value: function updateZipCode(zipcode) {
       this.setState({
         zipcode: zipcode
       });
-      console.log("hellozip" + this.state.zipcode);
+      this.fetchData(zipcode);
+      console.log("abs");
     }
   }, {
     key: 'render',
     value: function render() {
       console.log(this.state.zipcode);
+
       return _react2.default.createElement(
         'div',
         { className: 'container' },

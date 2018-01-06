@@ -10,19 +10,22 @@ class App extends React.Component {
     this.updateZipCode = this.updateZipCode.bind(this);
   }
 
+  fetchData(zipcode){
+    const url = "http://api.wunderground.com/api/9412603c2dcefb48/conditions/q/"+zipcode +".json"
+    fetch(url)
+    .then(res => res.json())
+    .then(data => console.log(data.current_observation.display_location))
+  }
+
   updateZipCode(zipcode){
     this.setState({
       zipcode : zipcode
     })
+    this.fetchData(zipcode)
     console.log("abs")
   }
 
-  fetchData(zipcode){
-    url = "http://api.wunderground.com/api/9412603c2dcefb48/conditions/q/"+zipcode +".json"
-    fetch(url)
-    .then(res => res.json())
-    .then(data => console.log(data))
-  }
+
 
   render() {
     console.log(this.state.zipcode)
