@@ -11,14 +11,12 @@ class App extends React.Component {
   }
 
   fetchData(zipcode){
-    try{
       const url = "http://api.wunderground.com/api/9412603c2dcefb48/conditions/q/"+zipcode +".json"
       fetch(url)
       .then(res => res.json())
       .then(data => console.log(data.current_observation.display_location))
-    }catch(e){
-    console.log(e)
-    }
+      .catch(e => console.log(e))
+
   }
 
   updateZipCode(zipcode){

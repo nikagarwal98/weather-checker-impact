@@ -1008,6 +1008,8 @@ var App = function (_React$Component) {
         return res.json();
       }).then(function (data) {
         return console.log(data.current_observation.display_location);
+      }).catch(function (e) {
+        return console.log(e);
       });
     }
   }, {
