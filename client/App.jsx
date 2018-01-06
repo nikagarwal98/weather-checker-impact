@@ -10,4 +10,18 @@ const App = function() {
   )
 }
 
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = false;
+    this.updateZipCode = this.updateZipCode.bind(this);
+  }
+
+  updateZipCode(zipcode){
+    this.setZipCode({
+      
+    })
+  }
+}
+
 export default App;
