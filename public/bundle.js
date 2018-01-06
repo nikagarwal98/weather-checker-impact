@@ -1006,19 +1006,21 @@ var App = function (_React$Component) {
       this.setState({
         zipcode: zipcode
       });
+      console.log("hellozip" + this.state.zipcode);
     }
   }, {
     key: 'render',
     value: function render() {
+      console.log(this.state.zipcode);
       return _react2.default.createElement(
         'div',
         { className: 'container' },
         _react2.default.createElement(
           'h1',
           null,
-          'What\'s the weather?'
+          'Whats the weather?'
         ),
-        _react2.default.createElement(_ZipForm2.default, { 'function': this.updateZipCode })
+        _react2.default.createElement(_ZipForm2.default, { fn: this.updateZipCode })
       );
     }
   }]);
@@ -2476,9 +2478,10 @@ var ZipForm = function (_React$Component) {
 
   _createClass(ZipForm, [{
     key: 'handleClick',
-    value: function handleClick(event) {
+    value: function handleClick(event, fn) {
       event.preventDefault();
-      console.log('this is:', this);
+      fn(document.getElementById("input").value);
+      console.log('this is:', document.getElementById("input").value);
     }
   }, {
     key: 'render',
@@ -2488,11 +2491,11 @@ var ZipForm = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { id: 'zip-form' },
-        _react2.default.createElement('input', { placeholder: 'Enter your Zip Code' }),
+        _react2.default.createElement('input', { id: 'input', placeholder: 'Enter your Zip Code' }),
         _react2.default.createElement(
           'button',
           { onClick: function onClick(e) {
-              return _this2.handleClick(e);
+              return _this2.handleClick(e, _this2.props.fn);
             } },
           'Go'
         )

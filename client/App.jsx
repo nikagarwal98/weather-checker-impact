@@ -14,13 +14,16 @@ class App extends React.Component {
     this.setState({
       zipcode : zipcode
     })
+    console.log("hellozip" + this.state.zipcode)
+
   }
 
   render() {
+    console.log(this.state.zipcode)
     return (
       <div className="container">
-        <h1>What's the weather?</h1>
-        <ZipForm function={this.updateZipCode}/>
+        <h1>Whats the weather?</h1>
+        <ZipForm fn={this.updateZipCode}/>
       </div>
       )
     }
