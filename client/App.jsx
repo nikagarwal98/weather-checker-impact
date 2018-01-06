@@ -14,12 +14,19 @@ class App extends React.Component {
     this.setState({
       zipcode : zipcode
     })
-    console.log("hellozip" + this.state.zipcode)
+    console.log("abs")
+  }
 
+  fetchData(zipcode){
+    url = "http://api.wunderground.com/api/9412603c2dcefb48/conditions/q/"+zipcode +".json"
+    fetch(url)
+    .then(res => res.json())
+    .then(data => console.log(data))
   }
 
   render() {
     console.log(this.state.zipcode)
+
     return (
       <div className="container">
         <h1>Whats the weather?</h1>
